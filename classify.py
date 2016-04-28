@@ -27,6 +27,13 @@ hog = HOG(orientations = 18, pixelsPerCell = (10, 10),
 
 # load the image and convert it to grayscale
 image = cv2.imread(args["image"])
+
+scale_factor = 1
+if image.shape[1]/600 > 0:
+	scale_factor = int(image.shape[1]/600)	
+newx,newy = int(image.shape[1]/scale_factor),int(image.shape[0]/scale_factor)
+image = cv2.resize(image,(newx,newy))
+
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
 # blur the image, find edges, and then find contours along
@@ -71,5 +78,11 @@ for (c, _) in cnts:
 		cv2.rectangle(image, (x, y), (x + w, y + h), (0, 255, 0), 1)
 		cv2.putText(image, str(digit), (x - 10, y - 10),
 			cv2.FONT_HERSHEY_SIMPLEX, 1.2, (0, 255, 0), 2)
+
+		
+
+		
+
+		#cv2.imshow("image", newimage)
 		cv2.imshow("image", image)
 		cv2.waitKey(0)
