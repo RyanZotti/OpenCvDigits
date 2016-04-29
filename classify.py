@@ -66,6 +66,9 @@ for (c, _) in cnts:
 		thresh = dataset.deskew(thresh, 20)
 		thresh = dataset.center_extent(thresh, (20, 20))
 
+		big_thresh = cv2.resize(thresh,(int(thresh.shape[1]*5),int(thresh.shape[0]*5)))
+		print(str(thresh.shape[1])+" "+str(thresh.shape[0]))
+		cv2.imshow("thresh2", big_thresh)
 		cv2.imshow("thresh", thresh)
 
 		# extract features from the image and classify it

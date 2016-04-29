@@ -3,3 +3,7 @@ python classify.py --model models/svm.cpickle --image /Users/ryanzotti/Documents
 
 python classify.py --model models/svm.cpickle --image /Users/ryanzotti/Downloads/IMG_0302.JPG
 python classify.py --model models/svm.cpickle --image /Users/ryanzotti/Downloads/IMG_0301.JPG
+
+steps
+- save TF model to file and read and back and make predictions
+- build TF model off of pipelined HOG threshold and then incorporate into code
